@@ -61,11 +61,3 @@ th {
   word-wrap: break-word;
   word-break: break-all;
 }
-
-#html {
-  height: 100%;
-}
-
-#container {
-  display: flex;
-}

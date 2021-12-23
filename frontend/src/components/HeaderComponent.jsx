@@ -10,8 +10,10 @@ class HeaderComponent extends Component {
     }
     render() {
         return (
-            <div className='navbar navbar-expand-md navbar-dark bg-dark'>
+            <div id='header'>
+                <div className='navbar navbar-expand-md navbar-dark bg-dark'>
                 <a href='http://www.google.com' className='navbar-brand'>rathena-online</a>
+            </div>
             </div>
         );
     }
