@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AccountServices from '../services/AccountServices';
 
 class CreateAccountComponent extends Component {
@@ -66,26 +66,37 @@ class CreateAccountComponent extends Component {
             if (this.state.email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
                 // check if user name exists
                 AccountServices.getLoginAccountByUserId(this.state.userid).then((svcRes) => {
-                    if (svcRes && svcRes.data && svcRes.data.userid !== this.state.userid) {
-                        const client = AccountServices.getClientData();
+                    if (svcRes && svcRes.data && svcRes.data.userid) {
+                        alert("Choose a different userid");
+                    } else {
+                        AccountServices.getClientData().then((svcRes) => {
+                            let today = new Date();
+                            let dd = today.getDate();
+                            let mm = today.getMonth() + 1;
+                            let yyyy = today.getFullYear();
+                            if (dd < 10) dd = '0' + dd;
+                            if (mm < 10) mm = '0' + mm;
+                            today = yyyy + '-' + mm + '-' + dd;
+                            this.state.last_ip = svcRes.data.IPv4;
+                            this.state.character_slots = 9;
+                            this.state.group_id = 1;
+                            this.state.lastlogin = today;
+                            this.state.logincount = 0;
+                            this.state.old_group = 0;
+                            this.state.pincode = "0000";
+                            this.state.pincode_change = 0
+                            this.state.sex = this.state.sex;
+                            this.state.state = 0;
+                            this.state.unban_time = 0;
+                            this.state.vip_time = 0;
+                            this.state.web_auth_token = 0;
+                            this.state.web_auth_token_enabled = 0.
 
-                        this.state.character_slots = 9;
-                        this.state.group_id = 1;
-                        this.state.last_ip = client.data.IPv4;
-                        this.state.lastlogin = Date().toLocaleString();
-                        this.state.logincount = 0;
-                        this.state.old_group = 0;
-                        this.state.pincode = "0000";
-                        this.state.pincode_change = 0
-                        this.state.sex = this.state.sex;
-                        this.state.state = 0;
-                        this.state.unban_time = 0;
-                        this.state.vip_time = 0;
-                        this.state.web_auth_token = 0;
-                        this.state.web_auth_token_enabled = 0.
-
-                        AccountServices.postLoginAccount(this.state).then((svcRes) => {
-                            //redirect to some place
+                            AccountServices.postLoginAccount(this.state).then((svcRes) => {
+                                //redirect to some place
+                                alert("Account added successfully");
+                                <Redirect to="/accounts" />
+                            });
                         });
                     }
                 });
@@ -128,8 +139,6 @@ class CreateAccountComponent extends Component {
                                         <label className="form-check-label">M</label>
                                         <input className="form-check-input" type="radio" name="sex" value="F" onChange={this.changeSexHandler} />
                                         <label className="form-check-label">F</label>
-                                        {/* <input placeholder="Sex" name="sex" className="form-control"
-                                            value={} onChange={this.changeSexHandler} /> */}
                                     </div>
                                     <div className="form-group">
                                         <label> Email: </label>
@@ -149,7 +158,7 @@ class CreateAccountComponent extends Component {
 
                                     <button className="btn btn-success" onClick={this.saveAccount}>Save</button>
                                     <Link to="/accounts">
-                                        <button className="btn btn-danger" onClick={this.cancelApplication} style={{ marginLeft: "10px" }}>Cancel</button>
+                                        <button className="btn btn-danger" style={{ marginLeft: "10px" }}>Cancel</button>
                                     </Link>
                                 </form>
                             </div>
