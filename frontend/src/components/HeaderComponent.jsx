@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class HeaderComponent extends Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
@@ -10,10 +10,13 @@ class HeaderComponent extends Component {
     }
     render() {
         return (
-            <div id='header'>
-                <div className='navbar navbar-expand-md navbar-dark bg-dark'>
-                <a href='http://www.google.com' className='navbar-brand'>rathena-online</a>
-            </div>
+            <div>
+                <header>
+                    <nav className="navbar navbar-dark bg-dark">
+                        <div><a href='/' className='navbar-brand'>rathena-online</a></div>
+                    </nav>
+                </header>
+
             </div>
         );
     }

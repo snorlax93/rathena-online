@@ -24,25 +24,25 @@ class ListAccountComponent extends Component {
                     <table className="table table-striped table-bordered ">
                         <thead>
                             <tr>
-                                <th>Action</th>
-                                <th>userid</th>
-                                <th>user_pass</th>
-                                <th>sex</th>
-                                <th>email</th>
-                                <th>group_id</th>
-                                <th>state</th>
-                                <th>unban_time</th>
-                                <th>logincount</th>
-                                <th>lastlogin</th>
-                                <th>last_ip</th>
-                                <th>birthdate</th>
-                                <th>character_slots</th>
-                                <th>pincode</th>
-                                <th>pincode_change</th>
-                                <th>vip_time</th>
-                                <th>old_group</th>
-                                <th>web_auth_token</th>
-                                <th>web_auth_token_enabled</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">userid</th>
+                                <th scope="col">user_pass</th>
+                                <th scope="col">sex</th>
+                                <th scope="col">email</th>
+                                <th scope="col">group_id</th>
+                                <th scope="col">state</th>
+                                <th scope="col">unban_time</th>
+                                <th scope="col">logincount</th>
+                                <th scope="col">lastlogin</th>
+                                <th scope="col">last_ip</th>
+                                <th scope="col">birthdate</th>
+                                <th scope="col">character_slots</th>
+                                <th scope="col">pincode</th>
+                                <th scope="col">pincode_change</th>
+                                <th scope="col">vip_time</th>
+                                <th scope="col">old_group</th>
+                                <th scope="col">web_auth_token</th>
+                                <th scope="col">web_auth_token_enabled</th>
                             </tr>
                         </thead>
                         <tbody>

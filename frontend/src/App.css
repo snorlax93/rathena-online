@@ -47,17 +47,27 @@
   color: white;
 }
 
-table {
+.navbar-brand {
+  padding-left: 0.5rem;
+}
+
+.container {
+  margin-left: 0.rem !important;
+}
+
+/* table {
   table-layout: fixed;
   width: 100%;
 }
-
+*/
 td {
-  word-wrap: break-word;
-  word-break: break-all;
-}
+  /* word-wrap: break-word; */
+  /* word-break: break-all; */
+  font-size: 80%;
+} 
 
 th {
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
   word-break: break-all;
+  font-size: 75%;
 }
