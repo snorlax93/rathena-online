@@ -53,9 +53,7 @@ public class AccountController {
      */
     @RequestMapping("/login/find/userid/{userId}")
     public ResponseEntity<Login> getAccountByUserId(@PathVariable String userId) {
-        Login account = loginRepository.getByUserid(userId).orElseThrow(
-            ()-> new ResourceNotFoundException("Account not found with User ID: " + userId)
-        );
+        Login account = loginRepository.getByUserid(userId).orElse(null);
         return ResponseEntity.ok(account);
     }
 
