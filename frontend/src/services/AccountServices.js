@@ -12,7 +12,7 @@ class AccountService {
     }
 
     getLoginAccountByUserId(userId) {
-        return axios.get("http://"+DOMAIN_NAME+":8080/api/v1/account/login/"+userId);
+        return axios.get("http://"+DOMAIN_NAME+":8080/api/v1/account/login/find/userid/"+userId);
     }
 
     postLoginAccount(account) {
